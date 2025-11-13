@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flash Chatter</title>
+    <script src="https://ratatosk.cc.au.dk/socket.io/socket.io.js"></script>
+    <script src="https://ratatosk.cc.au.dk/javascripts/client-api.js"></script>
+</head>
+<body>
+<h1>Velkommen til Mai-Britts flash chatter</h1>
+
+<!-- Formular til at sende beskeder -->
+<form id="post-form" style="margin-top: 20px;">
+    <label for="message-input">Skriv en besked:</label><br>
+    <input type="text" id="message-input" placeholder="Din besked her..." style="width: 80%;" required>
+    <button type="submit">Send</button>
+</form>
+
+<script type="text/javascript">
+    (async function () {
+        // API-initialisering
+        let flashChatter = await apiSimpleSignup();
+
+        // Opret chat container
+        let chatContainer = document.createElement("div");
+        chatContainer.id = "chat-container";
+        chatContainer.style.border = "1px solid black";
+        chatContainer.style.padding = "10px";
+        chatContainer.style.maxHeight = "300px";
+        chatContainer.style.overflowY = "scroll";
+        document.body.appendChild(chatContainer);
+
+        // Modtag beskeder og vis dem
+        flashChatter.onPostReceived(function(post) {
+            let postElement = document.createElement("div");
+            postElement.className = "post";
+            postElement.id = "post-" + post.id;
+
+            // Tekst til beskeden
+            let messageText = document.createTextNode(
+                post.username + " [" + post.channel + "] (" +
+                new Date(post.timestamp).toLocaleTimeString() + "): " + post.message
+            );
+
+            // Tilføj beskeden til chatten
+            postElement.appendChild(messageText);
+            chatContainer.prepend(postElement);
+        });
+
+        // Håndter formularens submit-event
+        let postForm = document.getElementById("post-form");
+        let messageInput = document.getElementById("message-input");
+
+        postForm.addEventListener("submit", function (e) {
+            e.preventDefault(); // Forhindre standardformular-handling
+
+            // Opret beskedobjekt
+            const postObject = {
+                message: messageInput.value.trim()
+            };
+
+            // Send beskeden via API'et
+            flashChatter.post(postObject);
+
+            // Ryd inputfeltet efter afsendelse
+            messageInput.value = "";
+        });
+
+        // opgave 3
+
+        // Opret container til online brugere
+        let usersContainer = document.createElement("div");
+        usersContainer.id = "users-container";
+        usersContainer.innerHTML = "<h3>Online Brugere:</h3><ul id='user-list'></ul>";
+        document.body.appendChild(usersContainer);
+
+        // Funktion til at opdatere online brugere
+        function updateOnlineUsers() {
+            flashChatter.usernames(function(response) {
+                // Log online brugere for at sikre, at vi får dem korrekt
+                console.log("Online brugere:", response.data);
+
+                let userList = document.getElementById("user-list");
+                userList.innerHTML = ""; // Tøm listen
+
+                // Tilføj hver bruger til listen
+                response.data.forEach(function(username) {
+                    let userItem = document.createElement("li");
+                    userItem.textContent = username;
+                    userList.appendChild(userItem);
+                });
+            });
+        }
+
+        // Opdater brugere hvert 5. sekund
+        setInterval(updateOnlineUsers, 5000);
+        updateOnlineUsers(); // Initial opdatering
+
+
+  //opgave 4
+
+        flashChatter.onPostExpired(function(postId) {
+            var postElement = document.getElementById("post-" + postId);
+            if (postElement) {
+                postElement.remove();
+            }
+
+        });
+    })();
+
+
+
+</script>
+</body>
+</html>
+
+

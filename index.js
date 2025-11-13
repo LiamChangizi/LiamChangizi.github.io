@@ -1,0 +1,9 @@
+// ...existing code...
+const navToggle = document.getElementById('navToggle');
+const mainNav = document.getElementById('mainNav');
+
+navToggle?.addEventListener('click', () => {
+  const isOpen = mainNav.classList.toggle('open');
+  navToggle.setAttribute('aria-expanded', String(isOpen));
+});
+// ...existing code...

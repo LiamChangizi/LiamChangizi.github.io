@@ -1,0 +1,389 @@
+/* ====== Global Styles ====== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", Arial, sans-serif;
+  color: #222;
+  background: #f9fafc;
+  line-height: 1.6;
+}
+
+/* ====== Header ====== */
+header {
+  background: linear-gradient(135deg, #0b3d91, #1a73e8);
+  color: #fff;
+  padding: 2rem 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+  gap: 2rem;
+}
+
+.profile-figure img {
+  width: 180px;
+  height: auto;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.intro {
+  flex: 1;
+  text-align: right;
+}
+
+.name {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.small-line {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.contact-line a {
+  color: #fff;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.contact-line a:hover {
+  text-decoration: underline;
+}
+
+/* ====== Navigation ====== */
+nav {
+  background: #0a357f;
+  margin-top: 1.5rem;
+}
+
+.nav-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  list-style: none;
+  padding: 0.75rem 0;
+}
+
+.nav-list a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.4rem 0.9rem;
+  border-radius: 25px;
+  transition: 0.3s;
+}
+
+.nav-list a:hover {
+  background: #fff;
+  color: #0a357f;
+}
+
+/* ====== Main Content ====== */
+main {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+}
+
+.lead-text {
+  text-align: center;
+  font-size: 1.25rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.dense.center-links {
+  justify-content: center;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.dense.center-links a {
+  color: #0b3d91;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.dense.center-links a:hover {
+  color: #1a73e8;
+  text-decoration: underline;
+}
+
+/* ====== Projects ====== */
+#projects {
+  margin-bottom: 4rem;
+}
+
+#projects h2 {
+  font-size: 1.6rem;
+  border-bottom: 3px solid #0b3d91;
+  display: inline-block;
+  padding-bottom: 0.3rem;
+  margin-bottom: 1.2rem;
+}
+
+.projects-list {
+  list-style: none;
+  display: grid;
+  gap: 1.2rem;
+}
+
+.projects-list li {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
+}
+
+.projects-list li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+}
+
+.projects-list a {
+  color: #0b3d91;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.projects-list a:hover {
+  text-decoration: underline;
+}
+
+/* ====== Contact ====== */
+#contact {
+  background: #f0f4ff;
+  border-radius: 10px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+#contact h2 {
+  color: #0b3d91;
+  margin-bottom: 1rem;
+}
+
+/* ====== Footer ====== */
+footer {
+  text-align: center;
+  padding: 1.5rem 0;
+  background: #0a357f;
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+/* ====== Responsiveness ====== */
+@media (max-width: 700px) {
+  .header-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .intro {
+    text-align: center;
+  }
+
+  .nav-list {
+    gap: 0.5rem;
+  }
+
+  .projects-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+/* ====== About Page Specific ====== */
+
+.about-section {
+  max-width: 1000px;
+  margin: 4rem auto;
+  padding: 0 1rem;
+}
+
+.about-section h2 {
+  font-size: 1.8rem;
+  border-bottom: 3px solid #0b3d91;
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.about-photo {
+  width: 250px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.about-text {
+  flex: 1;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+.about-text strong {
+  color: #0b3d91;
+}
+
+@media (max-width: 700px) {
+  .about-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .about-photo {
+    width: 180px;
+  }
+}
+
+/* ====== CV Layout ====== */
+.cv-section {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+}
+
+.cv-section h3 {
+  color: #0b3d91;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #0b3d91;
+  display: inline-block;
+  padding-bottom: 0.2rem;
+}
+
+.cv-section ul {
+  list-style: disc;
+  margin-left: 1.5rem;
+  line-height: 1.6;
+}
+
+.cv-section ul ul {
+  list-style: circle;
+  margin-top: 0.5rem;
+}
+
+.skills-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  margin-left: 0;
+}
+
+.skills-list li {
+  background: #f0f4ff;
+  color: #0b3d91;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.download-cv {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.download-cv .btn {
+  display: inline-block;
+  background: #0b3d91;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background 0.25s;
+}
+
+.download-cv .btn:hover {
+  background: #1a73e8;
+}
+
+
+/* ====== Projects Page ====== */
+.project-category {
+  margin-bottom: 3rem;
+}
+
+.project-category h3 {
+  color: #0b3d91;
+  font-size: 1.5rem;
+  border-bottom: 2px solid #0b3d91;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 1.2rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+.project-card h4 {
+  color: #0b3d91;
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+
+.project-card p {
+  font-size: 0.95rem;
+  margin-bottom: 0.8rem;
+  color: #333;
+}
+
+.project-card .btn {
+  display: inline-block;
+  background: #0b3d91;
+  color: #fff;
+  padding: 0.45rem 0.9rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.25s;
+}
+
+.project-card .btn:hover {
+  background: #1a73e8;
+}
+
+
